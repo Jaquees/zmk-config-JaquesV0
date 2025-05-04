@@ -13,11 +13,11 @@
 // |     A     |     B     |     C     |
 
             bindings = <
-                &kp ESC     &kp N1    &kp N2    &kp N3    &kp N4    &kp N5
-                &kp TAB     &kp Q     &kp W     &kp E     &kp R     &kp T
-                &kp LSHFT   &kp A     &kp S     &kp D     &kp F     &kp G
-                &kp LCTRL   &kp Z     &kp X     &kp C     &kp V     &kp B
-                &kp LGUI    &kp LALT  &none     &none     &kp SPACE &none     /* &mo 1     ativa camada 1 (bt_layer)*/
+                &none     &none     &none     &none     &none     &none
+                &none     &kp Q     &kp W     &kp E     &kp R     &kp T
+                &none     &kp A     &kp S     &kp D     &kp F     &kp G
+                &none     &kp Z     &kp X     &kp C     &kp V     &kp B
+                &none     &none     &none     &none     &none     &none     /* &mo 1     ativa camada 1 (bt_layer)*/
             >;
         };
     };
