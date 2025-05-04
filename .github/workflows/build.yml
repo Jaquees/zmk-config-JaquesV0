@@ -1,6 +1,38 @@
-name: Build ZMK firmware
+name: Build ZMK Firmware
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ZMK
+        uses: actions/checkout@v4
+        with:
+          repository: zmkfirmware/zmk
+          submodules: recursive
+          path: zmk
+
+      - name: Checkout User Config
+        uses: actions/checkout@v4
+        with:
+          path: zmk-config
+
+      - name: Install Zephyr SDK 0.15.2
+        run: |
+          wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.15.2/zephyr-sdk-0.15.2_linux-x86_64.tar.gz
+          tar -xvf zephyr-sdk-0.15.2_linux-x86_64.tar.gz -C /opt
+          /opt/zephyr-sdk-0.15.2/setup.sh
+
+      - name: Build Firmware
+        run: |
+          cd zmk
+          west init -l app
+          west update
+          west zephyr-export
+          west build -s app -b nice_nano_v2 -- -DSHIELD=jaquesV0 -DZMK_CONFIG="$GITHUB_WORKSPACE/zmk-config/config"
+        
+      - name: Upload Firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: zmk-firmware
+          path: zmk/build/zephyr/zmk.uf2

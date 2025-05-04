@@ -7,9 +7,6 @@
         
         default_layer {
             display-name = "Default Layer";
-// ----------------------------------------------
-//
-//
 
             bindings = <
 
