@@ -1,4 +1,4 @@
-if SHIELD_JAQUESV0
+if SHIELD_jaquesV0
 
 config ZMK_KEYBOARD_NAME
     default "jaquesV0"
