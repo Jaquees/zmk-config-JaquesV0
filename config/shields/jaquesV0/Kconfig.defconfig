@@ -1,6 +1,6 @@
 if SHIELD_jaquesV0
 
-config ZMK_KEYBOARD_NAME
+config ZMK_jaquesV0
     default "jaquesV0"
 
 endif
