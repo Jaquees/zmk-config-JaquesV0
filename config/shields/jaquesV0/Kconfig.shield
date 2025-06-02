@@ -1,2 +1,2 @@
 config SHIELD_JAQUESV0
-    def_bool $(shields_list_contains,JAQUESV0)
+    def_bool $(shields_list_contains,jaquesV0)
